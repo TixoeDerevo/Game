@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Робот Грег - Математика для дошкольников</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Character Selection Screen -->
+    <div id="character-selection" class="screen active">
+        <div class="character-container">
+            <div class="robot-greg">
+                <div class="robot-head">🤖</div>
+            </div>
+            <div class="speech-bubble">
+                <span>Привет! Я робот Грег! Как тебя зовут?</span>
+            </div>
+            <div class="character-buttons">
+                <button class="character-btn" data-name="Миша">
+                    <div class="character-avatar">👦</div>
+                    <div class="character-name">Миша</div>
+                </button>
+                <button class="character-btn" data-name="Андрей">
+                    <div class="character-avatar">🧒</div>
+                    <div class="character-name">Андрей</div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Menu -->
+    <div id="main-menu" class="screen">
+        <div class="main-menu-container">
+            <div class="robot-greg main-menu-robot">
+                <div class="robot-head">🤖</div>
+            </div>
+            <div class="speech-bubble">
+                <span id="welcome-message">Привет! Давай изучать математику вместе!</span>
+            </div>
+            <div class="menu-grid">
+                <button class="game-btn" data-game="learn-numbers">
+                    <div class="btn-icon">🔢</div>
+                    <div class="btn-text">Учим цифры</div>
+                </button>
+                <button class="game-btn" data-game="count-objects">
+                    <div class="btn-icon">🧮</div>
+                    <div class="btn-text">Считаем предметы</div>
+                </button>
+                <button class="game-btn" data-game="find-number">
+                    <div class="btn-icon">🔍</div>
+                    <div class="btn-text">Найди цифру</div>
+                </button>
+                <button class="game-btn" data-game="simple-examples">
+                    <div class="btn-icon">➕</div>
+                    <div class="btn-text">Простые примеры</div>
+                </button>
+                <button class="game-btn" data-game="handwriting">
+                    <div class="btn-icon">✍️</div>
+                    <div class="btn-text">Пропись цифр</div>
+                </button>
+                <button class="game-btn" data-game="compare-quantities">
+                    <div class="btn-icon">⚖️</div>
+                    <div class="btn-text">Сравни количество</div>
+                </button>
+                <button class="game-btn" data-game="learn-tens">
+                    <div class="btn-icon">🔟</div>
+                    <div class="btn-text">Учим десятки</div>
+                </button>
+                <button class="game-btn" data-game="tens-units">
+                    <div class="btn-icon">🔢</div>
+                    <div class="btn-text">Десятки + единицы</div>
+                </button>
+            </div>
+            <button class="settings-btn" id="settings-btn">Сменить имя</button>
+        </div>
+    </div>
+
+    <!-- Learn Numbers Game -->
+    <div id="learn-numbers" class="screen game-screen">
+        <div class="game-header">
+            <button class="home-btn">🏠</button>
+            <h2>Учим цифры</h2>
+            <div class="robot-greg game-robot">
+                <div class="robot-head">🤖</div>
+            </div>
+        </div>
+        <div class="speech-bubble">
+            <span id="learn-numbers-speech">Привет! Изучим цифру 1!</span>
+        </div>
+        <div class="number-display">
+            <div id="current-number" class="big-number clickable">1</div>
+        </div>
+        <div class="game-controls">
+            <button id="prev-number" class="nav-btn">◀ Назад</button>
+            <div class="progress-indicator">
+                <span id="number-counter">1 из 10</span>
+            </div>
+            <button id="next-number" class="nav-btn">Вперед ▶</button>
+        </div>
+        <button id="repeat-numbers" class="repeat-btn hidden">Повторить еще раз</button>
+    </div>
+
+    <!-- Count Objects Game -->
+    <div id="count-objects" class="screen game-screen">
+        <div class="game-header">
+            <button class="home-btn">🏠</button>
+            <h2>Считаем предметы</h2>
+            <div class="robot-greg game-robot">
+                <div class="robot-head">🤖</div>
+            </div>
+        </div>
+        <div class="speech-bubble">
+            <span id="count-objects-speech">Давай посчитаем!</span>
+        </div>
+        <div class="objects-display" id="objects-container"></div>
+        <div class="answer-buttons" id="count-answers"></div>
+        <div class="progress-indicator">
+            <span id="count-progress">Задание 1</span>
+        </div>
+    </div>
+
+    <!-- Find Number Game -->
+    <div id="find-number" class="screen game-screen">
+        <div class="game-header">
+            <button class="home-btn">🏠</button>
+            <h2>Найди цифру</h2>
+            <div class="robot-greg game-robot">
+                <div class="robot-head">🤖</div>
+            </div>
+        </div>
+        <div class="speech-bubble">
+            <span id="find-number-speech">Найди цифру ОДИН!</span>
+        </div>
+        <div class="numbers-grid" id="numbers-grid"></div>
+        <div class="progress-indicator">
+            <span id="find-progress">Задание 1</span>
+        </div>
+    </div>
+
+    <!-- Simple Examples Game -->
+    <div id="simple-examples" class="screen game-screen">
+        <div class="game-header">
+            <button class="home-btn">🏠</button>
+            <h2>Простые примеры</h2>
+            <div class="robot-greg game-robot">
+                <div class="robot-head">🤖</div>
+            </div>
+        </div>
+        <div class="speech-bubble">
+            <span id="simple-examples-speech">Реши пример!</span>
+        </div>
+        <div class="math-problem">
+            <div class="problem-text" id="problem-text"></div>
+            <div class="visual-math" id="visual-math"></div>
+            <div class="math-equation" id="math-equation"></div>
+        </div>
+        <div class="answer-buttons" id="examples-answers"></div>
+        <div class="progress-indicator">
+            <span id="examples-progress">Пример 1</span>
+        </div>
+    </div>
+
+    <!-- Handwriting Game -->
+    <div id="handwriting" class="screen game-screen">
+        <div class="game-header">
+            <button class="home-btn">🏠</button>
+            <h2>Пропись цифр</h2>
+            <div class="robot-greg game-robot">
+                <div class="robot-head">🤖</div>
+            </div>
+        </div>
+        <div class="speech-bubble">
+            <span id="handwriting-speech">Давай научимся писать цифру 1!</span>
+        </div>
+        <div class="handwriting-area">
+            <div class="number-example" id="number-example">1</div>
+            <div class="canvas-container">
+                <canvas id="drawing-canvas" width="400" height="300"></canvas>
+            </div>
+            <div class="handwriting-controls">
+                <button id="clear-canvas" class="control-btn">🗑️ Очистить</button>
+                <button id="next-handwriting" class="control-btn">➡️ Следующая</button>
+            </div>
+        </div>
+        <div class="progress-indicator">
+            <span id="handwriting-counter">Цифра 1 из 10</span>
+        </div>
+    </div>
+
+    <!-- Compare Quantities Game -->
+    <div id="compare-quantities" class="screen game-screen">
+        <div class="game-header">
+            <button class="home-btn">🏠</button>
+            <h2>Сравни количество</h2>
+            <div class="robot-greg game-robot">
+                <div class="robot-head">🤖</div>
+            </div>
+        </div>
+        <div class="speech-bubble">
+            <span id="compare-speech">Где больше предметов?</span>
+        </div>
+        <div class="comparison-area">
+            <div class="group-container left-group" id="left-group"></div>
+            <div class="vs-indicator">VS</div>
+            <div class="group-container right-group" id="right-group"></div>
+        </div>
+        <div class="comparison-buttons">
+            <button class="compare-btn" id="left-more">Слева больше</button>
+            <button class="compare-btn" id="equal">Поровну</button>
+            <button class="compare-btn" id="right-more">Справа больше</button>
+        </div>
+        <div class="progress-indicator">
+            <span id="compare-progress">Задание 1</span>
+        </div>
+    </div>
+
+    <!-- Learn Tens Game -->
+    <div id="learn-tens" class="screen game-screen">
+        <div class="game-header">
+            <button class="home-btn">🏠</button>
+            <h2>Учим десятки</h2>
+            <div class="robot-greg game-robot">
+                <div class="robot-head">🤖</div>
+            </div>
+        </div>
+        <div class="speech-bubble">
+            <span id="learn-tens-speech">Изучаем десяток! 10 единиц = 1 десяток!</span>
+        </div>
+        <div class="tens-display">
+            <div class="tens-visualization" id="tens-visualization"></div>
+            <div id="current-ten" class="big-number clickable">10</div>
+        </div>
+        <div class="game-controls">
+            <button id="prev-ten" class="nav-btn">◀ Назад</button>
+            <div class="progress-indicator">
+                <span id="tens-counter">10 из 100</span>
+            </div>
+            <button id="next-ten" class="nav-btn">Вперед ▶</button>
+        </div>
+        <button id="repeat-tens" class="repeat-btn hidden">Повторить еще раз</button>
+    </div>
+
+    <!-- Tens + Units Game -->
+    <div id="tens-units" class="screen game-screen">
+        <div class="game-header">
+            <button class="home-btn">🏠</button>
+            <h2>Десятки + единицы</h2>
+            <div class="robot-greg game-robot">
+                <div class="robot-head">🤖</div>
+            </div>
+        </div>
+        <div class="speech-bubble">
+            <span id="tens-units-speech">3 десятка и 5 единиц = тридцать пять!</span>
+        </div>
+        <div class="tens-units-display">
+            <div class="tens-section" id="tens-section"></div>
+            <div class="plus-sign">+</div>
+            <div class="units-section" id="units-section"></div>
+            <div class="equals-sign">=</div>
+            <div class="result-number" id="result-number">35</div>
+        </div>
+        <div class="tens-units-controls">
+            <button id="generate-tens-units" class="control-btn">Новое число</button>
+        </div>
+        <div class="progress-indicator">
+            <span id="tens-units-counter">Число 1</span>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
